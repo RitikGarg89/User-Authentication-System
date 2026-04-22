@@ -19,6 +19,10 @@ module.exports = {
           '100%': { transform: 'scale(1) translate(-2%, 6%)' },
         }
       },
+      colors: {
+        'brand-red': '#780206',
+        'brand-blue': '#061161',
+      },
       borderRadius: {
         '3xl': '1.5rem',
         '4xl': '2rem',

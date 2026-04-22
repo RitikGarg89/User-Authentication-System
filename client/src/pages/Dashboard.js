@@ -17,7 +17,7 @@ function Dashboard() {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/api/auth/me", {
+        const res = await axios.get("https://user-authentication-system-2wl2.onrender.com/api/auth/me", {
           headers: { Authorization: `Bearer ${token}` }
         });
         setUser(res.data);
@@ -76,7 +76,7 @@ function Dashboard() {
           
           <div className="flex items-center gap-4">
             <button className="p-2.5 bg-white/5 hover:bg-white/10 rounded-full transition-colors border border-white/5">
-              <Bell className="w-5 h-5 text-brand-red/60" />
+              <Bell className="w-5 h-5 text-white" />
             </button>
             <div className="h-8 w-[1px] bg-white/10 mx-2"></div>
             <button
@@ -104,7 +104,7 @@ function Dashboard() {
                 <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight">
                   Welcome back, <span className="bg-gradient-to-r from-brand-red to-brand-blue bg-clip-text text-transparent">{user?.name}</span>
                 </h1>
-                <p className="text-brand-red/60 text-lg font-light max-w-xl">
+                <p className="text-white/70 text-lg font-light max-w-xl">
                   Your identity is protected and your workspace is fully synchronized.
                 </p>
                 <div className="mt-8 flex gap-4">
@@ -128,7 +128,7 @@ function Dashboard() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <motion.div variants={cardVariants} className="lg:col-span-1 space-y-6">
               <div className="glass-card p-8 border-white/5 h-full">
-                <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-brand-red/40 mb-8 px-1">Security Status</h3>
+                <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-white/40 mb-8 px-1">Security Status</h3>
                 <div className="space-y-5">
                   {[
                     { label: 'Cloud Identity', value: 'Active', icon: Shield, color: 'text-green-400' },
@@ -137,7 +137,7 @@ function Dashboard() {
                     <div key={idx} className="flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/5">
                       <div className="flex items-center gap-3">
                         <item.icon className={`w-5 h-5 ${item.color}`} />
-                        <span className="text-sm font-medium text-brand-red/80">{item.label}</span>
+                        <span className="text-sm font-medium text-white">{item.label}</span>
                       </div>
                       <span className="text-[10px] font-bold px-2 py-1 bg-white/10 rounded-md border border-white/10 uppercase">{item.value}</span>
                     </div>
@@ -167,7 +167,7 @@ function Dashboard() {
                     <div key={idx} className="space-y-1">
                       <div className="flex items-center gap-2 mb-1">
                          <field.icon className="w-4 h-4 text-brand-red/60" />
-                         <span className="text-[10px] uppercase tracking-widest font-bold text-brand-red/30">{field.label}</span>
+                         <span className="text-[10px] uppercase tracking-widest font-bold text-white/50">{field.label}</span>
                       </div>
                       <p className="text-lg font-medium text-white px-0.5">{field.value || 'Not set'}</p>
                     </div>
@@ -176,11 +176,11 @@ function Dashboard() {
 
                 <div className="mt-12 pt-8 border-t border-white/5 grid grid-cols-2 gap-4">
                    <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
-                      <p className="text-[10px] uppercase font-bold text-brand-red/30 mb-1">Account ID</p>
+                      <p className="text-[10px] uppercase font-bold text-white/50 mb-1">Account ID</p>
                       <p className="text-xs font-mono text-white/60 truncate">NXS-492-X92-2P1</p>
                    </div>
                    <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
-                      <p className="text-[10px] uppercase font-bold text-brand-red/30 mb-1">Last Login</p>
+                      <p className="text-[10px] uppercase font-bold text-white/50 mb-1">Last Login</p>
                       <p className="text-xs font-mono text-white/60">Today at 09:44 AM</p>
                    </div>
                 </div>

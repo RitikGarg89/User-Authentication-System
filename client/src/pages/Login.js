@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
@@ -11,11 +11,16 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Wake up Render backend
+  useEffect(() => {
+    axios.get("https://user-authentication-system-2wl2.onrender.com/").catch(() => {});
+  }, []);
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post("https://user-authentication-system-2wl2.onrender.com/api/auth/login", {
         email,
         password
       });
@@ -61,12 +66,12 @@ function Login() {
              <LogIn className="text-white w-8 h-8" />
           </div>
           <h2 className="text-4xl font-bold text-white mb-3 tracking-tight">Login</h2>
-          <p className="text-purple-200/60 font-light">Enter your credentials to continue</p>
+          <p className="text-white/70 font-light">Enter your credentials to continue</p>
         </motion.div>
 
         <form onSubmit={handleLogin} className="space-y-6">
           <motion.div variants={itemVariants} className="space-y-1">
-            <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-purple-300/40 px-1">Email</label>
+            <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/50 px-1">Email</label>
             <div className="relative group">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-300/30 group-focus-within:text-purple-400 transition-colors w-5 h-5" />
               <input
@@ -80,7 +85,7 @@ function Login() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="space-y-1">
-            <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-purple-300/40 px-1">Password</label>
+            <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/50 px-1">Password</label>
             <div className="relative group">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-300/30 group-focus-within:text-purple-400 transition-colors w-5 h-5" />
               <input
@@ -112,7 +117,7 @@ function Login() {
           </motion.button>
         </form>
 
-        <motion.p variants={itemVariants} className="text-center mt-10 text-purple-200/40 text-sm">
+        <motion.p variants={itemVariants} className="text-center mt-10 text-white/40 text-sm">
           Don't have an account?{' '}
           <span 
             onClick={() => navigate("/register")}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
@@ -12,11 +12,16 @@ function Register() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Wake up Render backend
+  useEffect(() => {
+    axios.get("https://user-authentication-system-2wl2.onrender.com/").catch(() => {});
+  }, []);
+
   const handleRegister = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/register", {
+      const res = await axios.post("https://user-authentication-system-2wl2.onrender.com/api/auth/register", {
         name,
         email,
         password
@@ -58,12 +63,12 @@ function Register() {
              <UserPlus className="text-white w-8 h-8" />
           </div>
           <h2 className="text-4xl font-bold text-white mb-3 tracking-tight">Register</h2>
-          <p className="text-purple-200/60 font-light">Create a new account now</p>
+          <p className="text-white/70 font-light">Create a new account now</p>
         </motion.div>
 
         <form onSubmit={handleRegister} className="space-y-5">
           <motion.div variants={itemVariants} className="space-y-1">
-            <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-purple-300/40 px-1">Full Name</label>
+            <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/50 px-1">Full Name</label>
             <div className="relative group">
               <User className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-300/30 group-focus-within:text-purple-400 transition-colors w-5 h-5" />
               <input
@@ -77,7 +82,7 @@ function Register() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="space-y-1">
-            <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-purple-300/40 px-1">Email</label>
+            <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/50 px-1">Email</label>
             <div className="relative group">
               <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-300/30 group-focus-within:text-purple-400 transition-colors w-5 h-5" />
               <input
@@ -91,7 +96,7 @@ function Register() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="space-y-1">
-            <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-purple-300/40 px-1">Password</label>
+            <label className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/50 px-1">Password</label>
             <div className="relative group">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-300/30 group-focus-within:text-purple-400 transition-colors w-5 h-5" />
               <input
@@ -123,7 +128,7 @@ function Register() {
           </motion.button>
         </form>
 
-        <motion.p variants={itemVariants} className="text-center mt-10 text-purple-200/40 text-sm">
+        <motion.p variants={itemVariants} className="text-center mt-10 text-white/40 text-sm">
           Already have an account?{' '}
           <span 
             onClick={() => navigate("/")}
