@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "User Auth System",
+  "name": "User Authentication System",
   "icons": [
     {
       "src": "favicon.ico",
